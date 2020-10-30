@@ -1,0 +1,184 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <title>To-do-list</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <style>
+        body
+        {
+            background-color:green;
+        }
+        .content
+        {
+            background:white;
+            width:600px;
+            height:25   0px auto;
+            opacity:1;
+            border-radius:10px;
+            margin-top:200px;
+            margin-left:28%;
+            box-shadow: 1px 5px 8px;    
+        }
+        ul
+        {
+            color:red;
+        }
+        .content h1
+        {
+            margin-top:20px;
+            margin-left:50px;
+            font-family:sans-serif;
+            font-weight:bold;
+        }
+        .content p
+        {
+            margin-top:-10px;
+            margin-left:50px;
+            font-family:sans-serif;
+            font-weight:bold;
+            opacity:0.5;
+            font-family:serif;
+        }
+        input
+        {
+            margin-left:50px;
+            height:30px;
+            width:38%;
+            border:2px solid black;
+            outline:none;
+            color:blue;
+            font-size:15px;
+        }
+        input:hover{
+            border:3px solid green;
+            color:red;
+        }
+        #add
+        {
+            width:100px;
+            background-color:#0d21ba;
+            opacity:0.7;
+            color:white;
+            border:none;
+            cursor:pointer;
+            border-radius:30px; 
+            margin-left:10px;
+            outline:none;
+        }
+        #add:hover{
+            background-color:blue;
+        }
+        button
+        {
+            opacity:0.8;
+            color:white;
+            margin-left:5px;
+            border:none;
+            border-radius:30px;
+            width:80px;
+            height:30px;
+            outline:0.5 orange;
+            cursor:pointer;
+        }
+        .btn button
+        {
+            display: inline-block;
+            width:120px;
+            margin-top:40px;
+            margin-left:50px;
+            cursor:pointer;
+            outline:none;
+        }
+        #btn1
+        {
+            width:170px;
+            background-color:#0d21ba;
+        }
+        #btn1:hover{
+            background-color:blue;
+        }
+        #btn2
+        {
+            background-color:#e61809;
+            margin-left:13px;
+        }
+        #btn2:hover{
+            background-color:red;   
+        }
+        #btn3
+        {
+            background-color:#44a819;
+            margin-left:13px;
+        }
+        #btn3:hover{
+            background-color:green;
+        }
+        footer
+        {
+            margin-top:40px;
+            text-align:center;
+            opacity:0.8;
+        }
+        #btn4
+        {
+            background-color:#0d21ba;
+            width:200px;
+            font-size:17px;
+            outline:none;
+        }
+        #btn4:hover{
+            background-color:blue;
+        }
+    </style> 
+<body>
+    <div class="content"><br>
+        <h1>My to-do list</h1>
+        <p>Click on add button and see your add data</p>
+        <input type="text" id="user_input" placeholder="add items">
+        <input type="button" id='add' onclick="add()"value="Add" title="add item">
+        <ul id="list_item">
+        </ul>
+        <div class="btn">
+            <button type="reset"  onclick="Allreset()" id='btn1' title="all clear">Clear Completed</button>
+            <button type="reset"  onclick="Reset()" id="btn2" title="clear add data">Empty List</button>
+            <button type="submit" id="btn3" title="save data">Save List</button>
+        </div>
+        <footer><button type="button" id="btn4" title="see time" onclick="Time()">Time</button><br>&copy</footer>
+    </div>
+    <script>
+        document.getElementById("add").onclick=function()
+        {
+            var node=document.createElement("LI");
+            var text=document.getElementById("user_input").value;
+            var textnode=document.createTextNode(text);
+            node.appendChild(textnode);
+            document.getElementById("list_item").appendChild(node);
+            if(text=="")
+                {
+                    alert("Warning!....your are not entering any data!");
+                }
+        }
+         
+        function Reset()
+        {
+            
+            document.getElementById("list_item").innerHTML="";
+        }
+        function Allreset()
+        {
+            document.getElementById("user_input").value="";
+            document.getElementById("list_item").innerHTML="";
+        }
+        function Time()
+        {
+            setInterval(check,1000);
+        }
+        function check()
+        {
+            var dt=new Date();
+            document.getElementById("btn4").innerHTML=dt.toLocaleTimeString();
+        }
+    </script>
+    </body>
+</html>
